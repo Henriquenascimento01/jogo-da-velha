@@ -4,7 +4,11 @@
 var divElement = document.querySelector ('div'),
     tableElement = document.querySelector ('table');
 
+    // objeto que terá as funçoes para ocorrer o jogo
+
  var Game = {
+    
+    // irá iniciar todo o jogo
     start() {
         this.field = [
                      
@@ -20,11 +24,13 @@ var divElement = document.querySelector ('div'),
     },
 
     
-
+    // irá inverter os jogares 
     nextPlayer () {
         this.currentPlayer = this.currentPlayer === 'X' ? 'O' : 'X'
     },
 
+
+    // verifica os espaços disponiveis para serem clicados 
     setField(line, column){
 		if(!this.isFinished && this.field[line][column] === ''){
 			this.field[line][column] = this.currentPlayer;
@@ -34,6 +40,7 @@ var divElement = document.querySelector ('div'),
 		}
 	},
 
+    // verifica se o jogo já foi finalizado e mostra quem venceu 
      isGameOver(){
         var field = this.field, 
             rows = 3,
@@ -87,7 +94,7 @@ var divElement = document.querySelector ('div'),
         }
     },
     
-
+        // irá desenhar o tabuleiro e iniciará a lógica do jogo 
         render(){
             
             var winner = this.isGameOver();
@@ -111,6 +118,7 @@ var divElement = document.querySelector ('div'),
         }
     
 }
+
 
 Game.start();
 
